@@ -1,18 +1,30 @@
 # Delera, Aritz B.
 
-# 1. Diamond Shape:
-# Write a Python function named print_diamond that takes an odd integer n as an argument and prints a diamond shape with a width of n using the * character.
-# For n = 5, the output should be:
-#    *
-#   ***
-#  *****
-#   ***
-#    *
-# Note: If an even number is passed, the function should return "Please provide an odd integer."
-
-
 # Make a DiamondPrinter class that we will be using for the program
-# define the printing process
-# use for loop for upper hand of the diamond
-# use for loop for the middle row of the diamond
-# use for loop for the lower half of the diamond
+class DiamondPrinter:
+    def __init__(self, n):
+        if n % 2 == 0:
+            self.is_odd = False
+        else:
+            self.is_odd = True
+            self.n = n
+
+    # define the printing process
+    def print_diamond(self):
+        if not self.is_odd:
+            return "Please provide an odd integer."
+            
+        # use for loop for upper hand of the diamond
+        for i in range(1, self.n, 2):
+            spaces = (self.n - i) // 2
+            asterisk = i
+            print(" " * spaces + "*" * asterisk)
+
+        # use for loop for the middle row of the diamond
+        print("*" * self.n)
+
+        # use for loop for the lower half of the diamond
+        for i in range(self.n - 2, 0, -2):
+            spaces = (self.n - i) // 2
+            asterisk = i
+            print(" " * spaces + "*" * asterisk)
